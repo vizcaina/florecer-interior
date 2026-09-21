@@ -837,3 +837,8 @@ input[type="email"]:focus{
 @media(min-width:700px){
   .galeria__grid{ grid-template-columns:repeat(3,minmax(0,1fr)); }
 }
+
+@media (max-width:699px){
+  .pie .pie__lema{ font-size:clamp(18px, 5vw, 24px); }
+  .pie__lema span{ display:block; }
+}
