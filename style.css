@@ -938,3 +938,43 @@ input[type="email"]:focus{
 .privacidad p{ color:var(--tinta-suave); }
 .privacidad__volver{ display:inline-block; padding-block:12px; color:var(--tinta); }
 .privacidad .privacidad__pendiente{ background:#EDD5DB; color:#3B2A2E; border-radius:12px; padding:18px; }
+
+/* Marcos de marca: filete champán y contorno interior delicado. */
+.hero__evento,
+.hero__organizador,
+.pie__logos .hero__logo{
+  position:relative;
+  border:1px solid #C6AB99;
+  border-radius:18px 6px 18px 6px;
+  box-shadow:0 8px 22px -14px rgba(59,42,46,.35);
+}
+.hero__evento::after,
+.hero__organizador::after,
+.pie__logos .hero__logo::after{
+  content:"";
+  position:absolute;
+  inset:5px;
+  border:1px solid rgba(198,171,153,.5);
+  border-radius:13px 3px 13px 3px;
+  pointer-events:none;
+}
+.hero__evento{
+  width:min(100%, 238px);
+  padding:16px 18px;
+  margin-left:auto;
+  background:linear-gradient(135deg,#FFFDFA,#F4EBE3);
+}
+.hero__evento-titulo{ font-size:23px; }
+.hero__evento-subtitulo{ font-size:10px; letter-spacing:.1em; margin:7px 0 10px; }
+.hero__evento-by{ gap:8px; }
+.hero__evento-by img{ width:88px; }
+.hero__evento-by span{ font-size:11px; }
+.hero__organizador img{ width:88%; }
+.pie__logos .hero__logo--apapacho{ padding-inline:18px; }
+.pie__logos .hero__logo--vizcaina img{ width:144px; }
+@media(min-width:900px){
+  .hero .hero__contenido{ grid-template-columns:minmax(0,1fr) 238px; }
+}
+@media(min-width:700px) and (max-width:899px){
+  .hero__evento{ margin-bottom:24px; }
+}
