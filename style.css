@@ -852,3 +852,89 @@ input[type="email"]:focus{
   input[type="text"], input[type="tel"], input[type="email"], textarea{ cursor:text; }
   button:disabled, #botonEnviar[disabled]{ cursor:progress; }
 }
+
+/* Vizcaína organiza el concurso; el evento y Apapacho quedan como referencia. */
+.hero .hero__contenido{ width:100%; max-width:var(--ancho); margin-inline:auto; }
+.hero__evento{
+  width:min(100%, 310px);
+  margin:0 0 24px auto;
+  padding:16px 20px;
+  border:1px solid rgba(255,255,255,.45);
+  border-radius:16px;
+  background:rgba(250,248,244,.92);
+  color:#30252A;
+  text-align:center;
+}
+.hero__evento-titulo{ font-family:var(--display); font-size:28px; font-weight:400; line-height:1.1; margin:0; }
+.hero__evento-subtitulo{ font-size:12px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; margin:8px 0 12px; }
+.hero__evento-by{ display:flex; gap:10px; align-items:center; justify-content:center; }
+.hero__evento-by span{ font-size:12px; }
+.hero__evento-by img{ width:110px; height:auto; filter:invert(1); mix-blend-mode:multiply; }
+.hero__organizador{
+  width:min(100%, 380px);
+  aspect-ratio:1.75;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  border-radius:16px;
+  overflow:hidden;
+}
+.hero__organizador img{ width:100%; height:auto; flex:none; }
+.hero .hero__invitacion{ color:#171215; font-size:clamp(22px, 5.5vw, 28px); letter-spacing:.02em; }
+.hero__invitacion strong{ font-weight:700; }
+.hero .tallo{ margin:4px 0; }
+@media(min-width:700px){
+  .hero__evento{ margin-bottom:0; }
+  .hero__organizador{ margin-top:0; }
+}
+@media(prefers-reduced-motion:no-preference){
+  .hero__evento, .hero__organizador{ animation:entrada .8s var(--curva) both; }
+  .hero__organizador{ animation-delay:.15s; }
+}
+
+/* Composición compacta para escritorio, con las marcas a la misma altura. */
+.hero__principal{ min-width:0; }
+@media(min-width:900px){
+  .hero{ padding:44px var(--margen); }
+  .hero .hero__contenido{
+    max-width:1040px;
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) 280px;
+    column-gap:clamp(40px, 6vw, 96px);
+    align-items:start;
+  }
+  .hero__principal{ grid-column:1; grid-row:1; }
+  .hero__evento{
+    grid-column:2;
+    grid-row:1;
+    width:100%;
+    margin:0;
+    padding:20px 18px;
+    border-radius:14px;
+    background:rgba(250,248,244,.88);
+  }
+  .hero__organizador{ width:320px; max-width:100%; border-radius:14px; }
+  .hero__evento-titulo{ font-size:27px; }
+  .hero__evento-subtitulo{ font-size:11px; }
+  .hero .hero__bajada{ max-width:43ch; font-size:20px; line-height:1.6; }
+  .hero .hero__invitacion{ margin-bottom:12px; }
+  .hero__participar{ margin-top:22px; }
+}
+
+.pie__redes{ margin:28px auto 0; padding-top:24px; border-top:1px solid rgba(250,248,244,.2); max-width:480px; }
+.pie .pie__redes-titulo{ margin:0 0 14px; font-size:16px; color:var(--marfil); }
+.pie__redes-enlaces{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
+.pie__redes a{ display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:48px; padding:10px 18px; border:1px solid rgba(250,248,244,.35); border-radius:100px; color:var(--marfil); text-decoration:none; transition:background-color .2s, color .2s; }
+.pie__redes a:hover{ background:var(--rosa); color:var(--tinta-boton); }
+.pie__redes svg{ width:22px; height:22px; flex:none; }
+
+.formulario__legal a{ color:inherit; text-decoration:underline; text-underline-offset:3px; }
+.pie .pie__privacidad{ margin-top:22px; }
+.pie__privacidad a{ display:inline-block; padding:12px; color:var(--marfil); text-underline-offset:4px; }
+.privacidad{ max-width:820px; margin:auto; padding:40px var(--margen) 64px; }
+.privacidad h1{ font-family:var(--display); font-size:clamp(36px, 8vw, 54px); font-weight:400; line-height:1.15; }
+.privacidad h2{ font-size:22px; line-height:1.3; margin-top:32px; }
+.privacidad p{ color:var(--tinta-suave); }
+.privacidad__volver{ display:inline-block; padding-block:12px; color:var(--tinta); }
+.privacidad .privacidad__pendiente{ background:#EDD5DB; color:#3B2A2E; border-radius:12px; padding:18px; }
