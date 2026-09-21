@@ -292,7 +292,7 @@ if (formulario) {
     } catch (error) {
 
       boton.disabled = false;
-      boton.textContent = "Registrarme para concursar";
+      boton.textContent = "REGISTRARME";
       aviso.textContent = "No pudimos confirmar tu registro. Revisa tu conexión y vuelve a enviar; conservamos tus datos para reintentarlo.";
     } finally {
       clearTimeout(limite);
