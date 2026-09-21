@@ -6,7 +6,6 @@
    00 · CONFIGURACIÓN EDITABLE  ← lo único que necesitas tocar
    01 · Respaldo de imágenes
    02 · Aparición al hacer scroll
-   03 · Contador de lugares
    04 · Scroll suave a los botones
    05 · Galería y lightbox
    06 · Carrusel de testimonios
@@ -17,22 +16,16 @@
 /* ---------- 00 · CONFIGURACIÓN EDITABLE ---------- */
 
 // URL del Google Apps Script publicado como aplicación web.
-// Mientras diga "PEGAR_URL_APPS_SCRIPT_AQUI" el formulario funciona en modo
-// demostración: valida, muestra la confirmación, pero no guarda nada.
-const API_URL = "PEGAR_URL_APPS_SCRIPT_AQUI";
+// Pega la URL /exec de la aplicación web. Sin conexión no se confirma el registro.
+const API_URL = "https://script.google.com/macros/s/AKfycbyEH0qARUGzXmXt-nvYtJXSkilLtze5FH8wJC6mK9p-FiboJ5_quHKXacCz7IeZM4Uj/exec";
 
-// Número de WhatsApp en formato internacional, sólo dígitos (52 + 10 dígitos).
-const WHATSAPP_NUMERO = "52XXXXXXXXXX";
+// Número de WhatsApp proporcionado por la empresa, sin espacios ni signo +.
+const WHATSAPP_NUMERO = "5213319571684";
 
-// Mensaje precargado del botón de WhatsApp.
-const WHATSAPP_MENSAJE = "Hola, me registré en el evento Florecer Interior y me gustaría recibir más información.";
+// {nombre} se sustituye por el nombre del registro confirmado.
+const WHATSAPP_MENSAJE = "¡Hola! 🌷 Soy {nombre}. Ya me registré en Florecer Interior para concursar por un curso de florería. Me gustaría conocer más detalles del concurso. ¡Gracias!";
 
-// Lugares que quedan disponibles y cupo total del evento.
-const LUGARES_DISPONIBLES = 18;
-const CUPO_TOTAL = 25;
 
-// Velocidad del carrusel de testimonios, en milisegundos.
-const TESTIMONIOS_INTERVALO = 6000;
 
 
 /* ---------- 01 · Respaldo de imágenes ----------
@@ -65,42 +58,6 @@ if ("IntersectionObserver" in window) {
 } else {
   // Navegadores antiguos: se muestra todo sin animación
   elementosReveal.forEach(el => el.classList.add("visible"));
-}
-
-
-/* ---------- 03 · Contador de lugares ---------- */
-const contador = document.getElementById("contadorLugares");
-const petalosCaja = document.getElementById("petalosCupo");
-
-if (contador) {
-  contador.textContent = LUGARES_DISPONIBLES === 1
-    ? "Queda 1 lugar disponible"
-    : `Quedan ${LUGARES_DISPONIBLES} lugares disponibles`;
-}
-
-if (petalosCaja) {
-  // Un pétalo por lugar: los llenos son los que siguen disponibles
-  for (let i = 0; i < CUPO_TOTAL; i++) {
-    const petalo = document.createElement("span");
-    petalo.className = "petalo" + (i < LUGARES_DISPONIBLES ? " petalo--lleno" : "");
-    petalosCaja.appendChild(petalo);
-  }
-
-  // Los pétalos aparecen uno a uno cuando la tarjeta entra en pantalla
-  if ("IntersectionObserver" in window) {
-    const obsPetalos = new IntersectionObserver((entradas, obs) => {
-      entradas.forEach(entrada => {
-        if (!entrada.isIntersecting) return;
-        petalosCaja.querySelectorAll(".petalo").forEach((p, i) => {
-          setTimeout(() => p.classList.add("petalo--visible"), i * 45);
-        });
-        obs.disconnect();
-      });
-    }, { threshold: 0.4 });
-    obsPetalos.observe(petalosCaja);
-  } else {
-    petalosCaja.querySelectorAll(".petalo").forEach(p => p.classList.add("petalo--visible"));
-  }
 }
 
 
@@ -173,82 +130,6 @@ if (lightbox) {
 }
 
 
-/* ---------- 06 · Carrusel de testimonios ---------- */
-const pista = document.getElementById("carruselPista");
-const carrusel = document.getElementById("carrusel");
-const puntosCaja = document.getElementById("carruselPuntos");
-
-if (pista && carrusel) {
-  const laminas = Array.from(pista.children);
-  let indice = 0;
-  let temporizador = null;
-
-  // Puntos de navegación
-  laminas.forEach((_, i) => {
-    const punto = document.createElement("button");
-    punto.type = "button";
-    punto.className = "carrusel__punto";
-    punto.setAttribute("role", "tab");
-    punto.setAttribute("aria-label", `Testimonio ${i + 1}`);
-    punto.addEventListener("click", () => { ir(i); reiniciar(); });
-    puntosCaja.appendChild(punto);
-  });
-  const puntos = Array.from(puntosCaja.children);
-
-  function ir(n) {
-    indice = (n + laminas.length) % laminas.length;
-    pista.style.transform = `translateX(-${indice * 100}%)`;
-    puntos.forEach((p, i) => p.setAttribute("aria-selected", i === indice));
-    laminas.forEach((l, i) => l.setAttribute("aria-hidden", i !== indice));
-  }
-
-  function reiniciar() {
-    clearInterval(temporizador);
-    // Respeta la preferencia de movimiento reducido
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    temporizador = setInterval(() => ir(indice + 1), TESTIMONIOS_INTERVALO);
-  }
-
-  ir(0);
-  reiniciar();
-
-  // Pausar mientras se interactúa
-  carrusel.addEventListener("mouseenter", () => clearInterval(temporizador));
-  carrusel.addEventListener("mouseleave", reiniciar);
-  carrusel.addEventListener("focusin", () => clearInterval(temporizador));
-  carrusel.addEventListener("focusout", reiniciar);
-
-  // Swipe en celular
-  let inicioX = 0, deltaX = 0, arrastrando = false;
-
-  pista.addEventListener("touchstart", e => {
-    inicioX = e.touches[0].clientX;
-    deltaX = 0;
-    arrastrando = true;
-    pista.classList.add("arrastrando");
-    clearInterval(temporizador);
-  }, { passive: true });
-
-  pista.addEventListener("touchmove", e => {
-    if (!arrastrando) return;
-    deltaX = e.touches[0].clientX - inicioX;
-    const porcentaje = (deltaX / carrusel.offsetWidth) * 100;
-    pista.style.transform = `translateX(calc(-${indice * 100}% + ${porcentaje}%))`;
-  }, { passive: true });
-
-  pista.addEventListener("touchend", () => {
-    arrastrando = false;
-    pista.classList.remove("arrastrando");
-    if (Math.abs(deltaX) > carrusel.offsetWidth * 0.18) {
-      ir(deltaX < 0 ? indice + 1 : indice - 1);
-    } else {
-      ir(indice);
-    }
-    reiniciar();
-  });
-}
-
-
 /* ---------- 07 · Formulario: validación ---------- */
 const formulario = document.getElementById("formulario");
 const aviso = document.getElementById("avisoFormulario");
@@ -266,6 +147,7 @@ if (inputTelefono) {
 
 // Marca un campo como válido o inválido y muestra el mensaje
 function marcar(campo, mensaje) {
+  campo.setAttribute("aria-invalid", mensaje ? "true" : "false");
   const contenedor = campo.closest(".campo");
   const error = contenedor.querySelector(".campo__error");
   if (mensaje) {
@@ -301,32 +183,18 @@ function validarCorreo() {
   return marcar(c, "");
 }
 
-function validarGrupo(nombre, mensaje) {
-  const entradas = formulario.querySelectorAll(`[name="${nombre}"]`);
-  const grupo = entradas[0].closest(".campo");
-  const error = document.getElementById("error-" + nombre);
-  const elegido = Array.from(entradas).some(e => e.checked);
-
-  grupo.classList.toggle("invalido", !elegido);
-  if (error) error.textContent = elegido ? "" : mensaje;
-  return elegido;
-}
-
 if (formulario) {
   // Validar al salir de cada campo de texto
   document.getElementById("nombre").addEventListener("blur", validarNombre);
   document.getElementById("telefono").addEventListener("blur", validarTelefono);
   document.getElementById("correo").addEventListener("blur", validarCorreo);
 
-  // Limpiar el error en cuanto la persona corrige
-  formulario.querySelectorAll("input").forEach(input => {
-    input.addEventListener("input", () => {
-      const grupo = input.closest(".campo");
-      if (grupo && grupo.classList.contains("invalido") && input.type !== "text") {
-        grupo.classList.remove("invalido");
-        const err = grupo.querySelector(".campo__error");
-        if (err) err.textContent = "";
-      }
+  const validadores = { nombre: validarNombre, telefono: validarTelefono, correo: validarCorreo };
+  Object.entries(validadores).forEach(([id, validar]) => {
+    const campo = document.getElementById(id);
+    campo.addEventListener("input", () => {
+      aviso.textContent = "";
+      if (campo.closest(".campo").matches(".invalido, .valido")) validar();
     });
   });
 }
@@ -337,12 +205,23 @@ if (formulario) {
 // Arma el enlace de WhatsApp de la pantalla de confirmación
 const botonWhatsApp = document.getElementById("botonWhatsApp");
 if (botonWhatsApp) {
-  botonWhatsApp.href = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(WHATSAPP_MENSAJE)}`;
+  botonWhatsApp.hidden = !/^\d{10,15}$/.test(WHATSAPP_NUMERO);
+
 }
+
+const whatsappFlotante = document.getElementById("whatsappFlotante");
+if (whatsappFlotante) {
+  const mensaje = "¡Hola! 🌷 Me gustaría recibir información sobre el concurso Florecer Interior.";
+  whatsappFlotante.href = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensaje)}`;
+}
+
+let enviando = false;
+let ultimoRegistro = null;
 
 if (formulario) {
   formulario.addEventListener("submit", async e => {
     e.preventDefault();
+    if (enviando) return;
     aviso.textContent = "";
 
     // Campo trampa lleno = envío automatizado, se ignora en silencio
@@ -351,10 +230,7 @@ if (formulario) {
     const pruebas = [
       validarNombre(),
       validarTelefono(),
-      validarCorreo(),
-      validarGrupo("interes", "Elige al menos una opción."),
-      validarGrupo("curso", "Elige una opción."),
-      validarGrupo("contacto", "Elige cómo prefieres recibir tu descuento.")
+      validarCorreo()
     ];
 
     if (pruebas.includes(false)) {
@@ -368,56 +244,102 @@ if (formulario) {
       return;
     }
 
+    if (!/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(API_URL)) {
+      aviso.textContent = "El registro aún no está habilitado. Vuelve a intentarlo más tarde.";
+      return;
+    }
+
     // Datos que se enviarán a Google Sheets
     const datos = {
-      fecha: new Date().toISOString(),
       nombre: document.getElementById("nombre").value.trim(),
       telefono: document.getElementById("telefono").value.replace(/\D/g, ""),
       correo: document.getElementById("correo").value.trim().toLowerCase(),
-      interes: Array.from(formulario.querySelectorAll('[name="interes"]:checked')).map(i => i.value).join(", "),
-      curso: (formulario.querySelector('[name="curso"]:checked') || {}).value || "",
-      contacto: (formulario.querySelector('[name="contacto"]:checked') || {}).value || "",
-      origen: window.location.href    // útil para identificar la campaña de Meta Ads
+      sitio: document.getElementById("sitio").value
     };
 
+    const firma = JSON.stringify(datos);
+    if (!ultimoRegistro || ultimoRegistro.firma !== firma) {
+      ultimoRegistro = { firma, id: crypto.randomUUID() };
+    }
+    datos.id = ultimoRegistro.id;
     const boton = document.getElementById("botonEnviar");
+    enviando = true;
+    formulario.setAttribute("aria-busy", "true");
+    formulario.querySelectorAll("input").forEach(campo => { campo.disabled = true; });
     boton.disabled = true;
     boton.textContent = "Enviando…";
 
+    const control = new AbortController();
+    const limite = setTimeout(() => control.abort(), 25000);
     try {
-      if (API_URL && API_URL !== "PEGAR_URL_APPS_SCRIPT_AQUI") {
-        // text/plain evita la petición previa CORS que bloquea a Apps Script
-        await fetch(API_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(datos)
-        });
-      } else {
-        // Modo demostración mientras no se conecta la hoja de cálculo
-        console.info("Modo demostración · datos del registro:", datos);
-        await new Promise(r => setTimeout(r, 700));
-      }
+      const respuesta = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(datos),
+        signal: control.signal,
+        redirect: "follow",
+        credentials: "omit"
+      });
+      if (!respuesta.ok) throw new Error("Respuesta no válida");
+      const resultado = await respuesta.json();
+      if (resultado.ok !== true || resultado.id !== datos.id) throw new Error("Guardado no confirmado");
 
-      mostrarConfirmacion();
+      mostrarConfirmacion(datos.nombre);
 
       // Evento de conversión para Facebook / Instagram Ads (si el píxel está instalado)
       if (typeof fbq === "function") fbq("track", "Lead");
 
     } catch (error) {
-      console.error(error);
+
       boton.disabled = false;
-      boton.textContent = "Enviar mi registro";
-      aviso.textContent = "No pudimos enviar tu registro. Revisa tu conexión e inténtalo otra vez.";
+      boton.textContent = "Registrarme para concursar";
+      aviso.textContent = "No pudimos confirmar tu registro. Revisa tu conexión y vuelve a enviar; conservamos tus datos para reintentarlo.";
+    } finally {
+      clearTimeout(limite);
+      enviando = false;
+      formulario.removeAttribute("aria-busy");
+      formulario.querySelectorAll("input").forEach(campo => { campo.disabled = false; });
     }
   });
 }
 
-function mostrarConfirmacion() {
+function mostrarConfirmacion(nombre) {
+  if (botonWhatsApp) {
+    const mensaje = WHATSAPP_MENSAJE.replace("{nombre}", () => nombre.trim());
+    botonWhatsApp.href = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensaje)}`;
+    if (whatsappFlotante) whatsappFlotante.href = botonWhatsApp.href;
+  }
   const confirmacion = document.getElementById("confirmacion");
+  const primerNombre = nombre.trim().split(/\s+/)[0];
+  document.getElementById("confirmacionTitulo").textContent = `¡Gracias, ${primerNombre}! Recibimos tu registro.`;
   formulario.hidden = true;
   document.querySelector(".registro__encabezado").hidden = true;
   confirmacion.hidden = false;
   confirmacion.focus();
   confirmacion.scrollIntoView({ behavior: "smooth", block: "center" });
 }
+
+// Cierre al terminar el 29 de septiembre, hora de Guadalajara (UTC-6).
+const CIERRE_CONCURSO = Date.parse("2026-09-30T00:00:00-06:00");
+function tiempoRestante(ahora) {
+  const total = Math.max(0, Math.ceil((CIERRE_CONCURSO - ahora) / 1000));
+  return { dias: Math.floor(total / 86400), horas: Math.floor(total / 3600) % 24,
+    minutos: Math.floor(total / 60) % 60, segundos: total % 60, terminado: total === 0 };
+}
+function actualizarCuenta() {
+  const tiempo = tiempoRestante(Date.now());
+  for (const [clave, id] of Object.entries({dias:"cuentaDias", horas:"cuentaHoras", minutos:"cuentaMinutos", segundos:"cuentaSegundos"})) {
+    document.getElementById(id).textContent = String(tiempo[clave]).padStart(2, "0");
+  }
+  if (tiempo.terminado) {
+    const estado = document.getElementById("contadorEstado");
+    const texto = "El plazo de registro ha finalizado. Anuncio de ganadores: 30 de septiembre de 2026.";
+    if (estado.textContent !== texto) estado.textContent = texto;
+  }
+}
+actualizarCuenta();
+const intervaloCuenta = setInterval(() => {
+  actualizarCuenta();
+  if (Date.now() >= CIERRE_CONCURSO) clearInterval(intervaloCuenta);
+}, 1000);
+document.addEventListener("visibilitychange", () => { if (!document.hidden) actualizarCuenta(); });

@@ -7,8 +7,8 @@
 <!-- ============================================================
      SEO BÁSICO  ·  Edita títulos, descripción y URL antes de publicar
      ============================================================ -->
-<title>Florecer Interior · Curso gratuito de florería | Vizcaína</title>
-<meta name="description" content="Curso gratuito de florería para mujeres que desean conectar con su creatividad, bienestar y estilo personal. Cupo limitado y beneficio exclusivo Vizcaína.">
+<title>Florecer Interior · Participa para ganar un curso de florería | Vizcaína</title>
+<meta name="description" content="Regístrate en Florecer Interior y participa en el concurso para ganar un curso de florería con Apapacho Experiencias y Vizcaína.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#FAF8F4">
 <link rel="canonical" href="https://TU-DOMINIO.com/">
@@ -16,8 +16,8 @@
 <!-- Open Graph · así se ve el enlace al compartirse en Facebook / Instagram / WhatsApp -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_MX">
-<meta property="og:title" content="Florecer Interior · Curso gratuito de florería">
-<meta property="og:description" content="Una experiencia de diseño floral, bienestar y creatividad. Cupo limitado.">
+<meta property="og:title" content="Florecer Interior · Participa para ganar un curso de florería">
+<meta property="og:description" content="Participa por la oportunidad de ganar un curso de florería. Completa tu registro en Florecer Interior.">
 <meta property="og:image" content="https://TU-DOMINIO.com/images/og-florecer-interior.jpg">
 <meta property="og:url" content="https://TU-DOMINIO.com/">
 <meta name="twitter:card" content="summary_large_image">
@@ -29,16 +29,13 @@
 
 <link rel="stylesheet" href="style.css">
 
-<!-- Datos estructurados del evento (ayuda al SEO) -->
+<!-- Descripción de la página del concurso -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Event",
-  "name": "Florecer Interior",
-  "description": "Curso gratuito de florería organizado por Vizcaína.",
-  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-  "organizer": { "@type": "Organization", "name": "Vizcaína" },
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "MXN", "availability": "https://schema.org/LimitedAvailability" }
+  "@type": "WebPage",
+  "name": "Florecer Interior · Concurso de florería",
+  "description": "Registro al concurso para ganar un curso de florería con Apapacho Experiencias y Vizcaína."
 }
 </script>
 </head>
@@ -56,77 +53,90 @@
   <div class="hero__velo" aria-hidden="true"></div>
 
   <div class="hero__contenido">
-    <p class="hero__marca">Vizcaína presenta</p>
-
     <h1 class="hero__titulo">
       <span>Florecer</span>
       <span>Interior</span>
     </h1>
 
-    <!-- Tallo botánico que se dibuja solo al cargar la página -->
-    <svg class="tallo" viewBox="0 0 120 60" fill="none" aria-hidden="true">
-      <path class="tallo__linea" d="M4 30 C 34 30, 46 30, 60 30 C 74 30, 86 30, 116 30" stroke="currentColor" stroke-width="1"/>
-      <path class="tallo__hoja" d="M60 30 C 52 18, 62 10, 70 12 C 72 22, 68 30, 60 30 Z" stroke="currentColor" stroke-width="1"/>
-      <path class="tallo__hoja" d="M60 30 C 68 42, 58 50, 50 48 C 48 38, 52 30, 60 30 Z" stroke="currentColor" stroke-width="1"/>
+    <div class="hero__logos" aria-label="Apapacho Experiencias y Vizcaína Living Home">
+      <div class="hero__logo hero__logo--apapacho">
+        <img src="images/apapacho.jpeg" alt="Apapacho Experiencias" width="1280" height="427" decoding="async">
+      </div>
+      <div class="hero__logo hero__logo--vizcaina">
+        <img src="images/vizcaina.png" alt="Vizcaína Living Home" width="2500" height="2500" decoding="async">
+      </div>
+    </div>
+    <!-- Detalle botánico: se dibuja al cargar la portada. -->
+    <svg class="tallo" viewBox="0 0 120 60" fill="none" aria-hidden="true" focusable="false">
+      <path class="tallo__linea" d="M4 30 C34 30 46 30 60 30 C74 30 86 30 116 30" stroke="currentColor" stroke-width="1"/>
+      <path class="tallo__hoja" d="M60 30 C52 18 62 10 70 12 C72 22 68 30 60 30 Z" stroke="currentColor" stroke-width="1"/>
+      <path class="tallo__hoja" d="M60 30 C68 42 58 50 50 48 C48 38 52 30 60 30 Z" stroke="currentColor" stroke-width="1"/>
     </svg>
 
+    <p class="hero__invitacion">Te invita a</p>
+
     <p class="hero__bajada">
-      Curso gratuito de florería para mujeres que desean conectar con su creatividad,
-      bienestar y estilo personal.
+      participar para ganar un curso de florería. Regístrate en el concurso
+      y podrías vivir una experiencia llena de flores, creatividad e inspiración.
     </p>
+    <a class="boton boton--principal hero__participar" href="#registro" data-scroll>Quiero concursar</a>
 
-    <p class="hero__nota">
-      Además de participar en el curso, recibirás un descuento especial para conocer
-      la selección exclusiva de productos Vizcaína.
-    </p>
-
-    <a class="boton boton--principal" href="#registro" data-scroll>Quiero registrarme</a>
   </div>
 </header>
 
 <main>
+  <aside class="concurso-banner" aria-labelledby="contadorTitulo">
+    <div class="concurso-banner__texto">
+      <strong id="contadorTitulo">Tu oportunidad de florecer comienza aquí</strong>
+      <p id="contadorEstado" role="status">Cierre: 29 de septiembre de 2026, 11:59 p. m. · Guadalajara</p>
+    </div>
+    <div class="cuenta" role="timer" aria-label="Tiempo restante para el cierre" aria-live="off">
+      <span><b id="cuentaDias">--</b><small>Días</small></span>
+      <span><b id="cuentaHoras">--</b><small>Horas</small></span>
+      <span><b id="cuentaMinutos">--</b><small>Minutos</small></span>
+      <span><b id="cuentaSegundos">--</b><small>Segundos</small></span>
+    </div>
+  </aside>
 
   <!-- ============================================================
        2 · BENEFICIOS
        ============================================================ -->
   <section class="beneficios" aria-labelledby="t-beneficios">
-    <h2 class="titulo-seccion" id="t-beneficios">Lo que vas a vivir</h2>
+    <h2 class="titulo-seccion" id="t-beneficios">Un premio para dejar florecer tu creatividad</h2>
 
     <div class="beneficios__lista">
       <article class="beneficio" data-reveal>
         <span class="beneficio__marca" aria-hidden="true">🌷</span>
-        <h3>Curso gratuito</h3>
-        <p>Aprende técnicas básicas de diseño floral.</p>
+        <h3>Un curso de florería</h3>
+        <p>Participa por la oportunidad de aprender técnicas básicas de diseño floral.</p>
       </article>
 
       <article class="beneficio" data-reveal>
         <span class="beneficio__marca" aria-hidden="true">✨</span>
-        <h3>Descuento exclusivo</h3>
-        <p>Accede a beneficios especiales para asistentes.</p>
+        <h3>Un momento para crear</h3>
+        <p>El premio es una invitación a explorar colores, texturas y composiciones con flores.</p>
       </article>
 
       <article class="beneficio" data-reveal>
         <span class="beneficio__marca" aria-hidden="true">💐</span>
         <h3>Inspiración y bienestar</h3>
-        <p>Disfruta una experiencia diferente enfocada en creatividad y bienestar.</p>
+        <p>Si ganas, podrás disfrutar una experiencia dedicada a la creatividad y el bienestar.</p>
       </article>
     </div>
   </section>
 
-  <!-- ============================================================
-       3 · DISPONIBILIDAD
-       El número se edita desde script.js → LUGARES_DISPONIBLES
-       ============================================================ -->
   <section class="cupo" aria-labelledby="t-cupo">
     <div class="cupo__tarjeta" data-reveal>
-      <p class="cupo__etiqueta">🌷 Cupo limitado</p>
-      <h2 class="cupo__titulo" id="t-cupo">Lugares disponibles</h2>
-
-      <!-- Contador: el texto y los pétalos los genera JavaScript -->
-      <p class="cupo__contador" id="contadorLugares" aria-live="polite">Quedan 18 lugares disponibles</p>
-      <div class="cupo__petalos" id="petalosCupo" aria-hidden="true"></div>
-
-      <p class="cupo__nota">Para garantizar una experiencia personalizada, los espacios son limitados.</p>
+      <p class="cupo__etiqueta">🌷 Florecer Interior</p>
+      <h2 class="cupo__titulo" id="t-cupo">¿Cómo participar?</h2>
+      <p class="cupo__nota">Completa el formulario con tu nombre, teléfono y correo electrónico para participar en el concurso.</p>
+      <p class="cupo__nota">Tu registro es para concursar por el curso de florería; no es una reservación ni un premio confirmado.</p>
+      <dl class="concurso-datos">
+        <div><dt>El premio</dt><dd>20 personas ganarán un curso de florería.</dd></div>
+        <div><dt>Lugar del curso</dt><dd>Guadalajara.</dd></div>
+        <div><dt>Cierre de registros</dt><dd>29 de septiembre de 2026, 11:59 p. m., hora de Guadalajara.</dd></div>
+        <div><dt>Anuncio de ganadores</dt><dd>Miércoles 30 de septiembre de 2026. Contactaremos directamente a las personas ganadoras con los datos de su registro.</dd></div>
+      </dl>
     </div>
   </section>
 
@@ -137,76 +147,23 @@
        ============================================================ -->
   <section class="galeria" aria-labelledby="t-galeria">
     <h2 class="titulo-seccion" id="t-galeria">Inspírate con el arte floral</h2>
-    <p class="subtitulo-seccion">Descubre algunas ideas y estilos que exploraremos durante esta experiencia.</p>
+    <p class="subtitulo-seccion">Descubre ideas y estilos que despiertan las ganas de crear con flores.</p>
 
     <div class="galeria__grid" id="galeria">
-      <button class="galeria__item" type="button" data-reveal><img src="images/flor1.jpg" alt="Ramo de temporada en tonos rosa empolvado" loading="lazy" decoding="async"></button>
-      <button class="galeria__item" type="button" data-reveal><img src="images/flor2.jpg" alt="Centro de mesa bajo con follaje verde salvia" loading="lazy" decoding="async"></button>
-      <button class="galeria__item" type="button" data-reveal><img src="images/flor3.jpg" alt="Detalle de pétalos y cerámica artesanal" loading="lazy" decoding="async"></button>
-      <button class="galeria__item" type="button" data-reveal><img src="images/flor4.jpg" alt="Mesa montada con copas y flores frescas" loading="lazy" decoding="async"></button>
-      <button class="galeria__item" type="button" data-reveal><img src="images/flor5.jpg" alt="Arreglo asimétrico en jarrón de cristal" loading="lazy" decoding="async"></button>
-      <button class="galeria__item" type="button" data-reveal><img src="images/flor6.jpg" alt="Manos trabajando un arreglo floral" loading="lazy" decoding="async"></button>
-      <button class="galeria__item" type="button" data-reveal><img src="images/flor7.jpg" alt="Composición floral sobre mantel de lino" loading="lazy" decoding="async"></button>
-      <button class="galeria__item" type="button" data-reveal><img src="images/flor8.jpg" alt="Flores secas en tonos champagne" loading="lazy" decoding="async"></button>
-      <button class="galeria__item" type="button" data-reveal><img src="images/flor9.jpg" alt="Espacio de taller con materiales de florería" loading="lazy" decoding="async"></button>
+      <button class="galeria__item" type="button" data-reveal><img src="images/flor1.jpg" alt="Mesa rosa con un arreglo de flores blancas, rosas y moradas, vajilla y copas" width="1600" height="1066" loading="lazy" decoding="async"></button>
+      <button class="galeria__item" type="button" data-reveal><img src="images/flor2.jpg" alt="Mesa con decoración de maíz y flores amarillas, vajilla azul y copas ámbar" width="1600" height="1066" loading="lazy" decoding="async"></button>
+      <button class="galeria__item" type="button" data-reveal><img src="images/flor3.jpg" alt="Mesa con un arreglo de flores lilas y rosas, abundante follaje y vajilla clara" width="1600" height="1066" loading="lazy" decoding="async"></button>
     </div>
   </section>
 
-  <!-- ============================================================
-       5 · EXPERIENCIA (editorial)
-       ============================================================ -->
-  <section class="experiencia" aria-labelledby="t-experiencia">
-    <figure class="experiencia__figura" data-reveal>
-      <img src="images/experiencia.jpg" alt="Asistentes trabajando durante un taller de florería" loading="lazy" decoding="async">
-    </figure>
-
-    <div class="experiencia__texto" data-reveal>
-      <h2 class="titulo-seccion titulo-seccion--izq" id="t-experiencia">Más que un curso, una experiencia</h2>
-      <p>
-        Florecer Interior es un espacio diseñado para conectar con la creatividad,
-        descubrir nuevas formas de expresión y disfrutar de una experiencia única
-        rodeada de inspiración floral.
-      </p>
-      <p class="experiencia__firma">Vizcaína</p>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       6 · TESTIMONIOS (carrusel automático + swipe)
-       ============================================================ -->
-  <section class="testimonios" aria-labelledby="t-testimonios" aria-roledescription="carrusel">
-    <h2 class="titulo-seccion" id="t-testimonios">Lo que dicen nuestras asistentes</h2>
-
-    <div class="carrusel" id="carrusel">
-      <div class="carrusel__pista" id="carruselPista">
-
-        <figure class="testimonio">
-          <p class="testimonio__estrellas" aria-label="5 de 5 estrellas">⭐⭐⭐⭐⭐</p>
-          <blockquote>Una experiencia increíble. Aprendí muchísimo y además conocí productos hermosos.</blockquote>
-          <figcaption>María G.</figcaption>
-        </figure>
-
-        <figure class="testimonio">
-          <p class="testimonio__estrellas" aria-label="5 de 5 estrellas">⭐⭐⭐⭐⭐</p>
-          <blockquote>El ambiente fue maravilloso y los arreglos florales quedaron espectaculares.</blockquote>
-          <figcaption>Andrea R.</figcaption>
-        </figure>
-
-        <figure class="testimonio">
-          <p class="testimonio__estrellas" aria-label="5 de 5 estrellas">⭐⭐⭐⭐⭐</p>
-          <blockquote>Me encantó la atención y la inspiración que encontré durante el evento.</blockquote>
-          <figcaption>Sofía T.</figcaption>
-        </figure>
-
-        <figure class="testimonio">
-          <p class="testimonio__estrellas" aria-label="5 de 5 estrellas">⭐⭐⭐⭐⭐</p>
-          <blockquote>Salí con un arreglo precioso y con ganas de seguir creando en casa.</blockquote>
-          <figcaption>Paulina M.</figcaption>
-        </figure>
-
-      </div>
-
-      <div class="carrusel__puntos" id="carruselPuntos" role="tablist" aria-label="Elegir testimonio"></div>
+  <section class="preguntas" aria-labelledby="t-preguntas">
+    <h2 class="titulo-seccion" id="t-preguntas">Antes de dejarte florecer</h2>
+    <p class="subtitulo-seccion">Resolvemos tus dudas sobre el concurso.</p>
+    <div class="preguntas__lista">
+      <details><summary>¿Necesito experiencia en florería?</summary><p>No. Puedes participar aunque nunca hayas tomado un curso de florería.</p></details>
+      <details><summary>¿Cómo sabré si gané?</summary><p>El miércoles 30 de septiembre de 2026 anunciaremos a las 20 personas ganadoras. Si ganas, te contactaremos directamente con los datos que dejaste en el formulario.</p></details>
+      <details><summary>¿Dónde será el curso?</summary><p>En Guadalajara. Compartiremos la dirección y los detalles del curso con las personas ganadoras.</p></details>
+      <details><summary>¿Hasta cuándo puedo registrarme?</summary><p>Hasta el 29 de septiembre de 2026 a las 11:59 p. m., hora de Guadalajara.</p></details>
     </div>
   </section>
 
@@ -215,9 +172,9 @@
        ============================================================ -->
   <section class="cta">
     <div class="cta__caja" data-reveal>
-      <h2 class="cta__titulo">Reserva tu lugar</h2>
-      <p>Completa tu registro y recibe acceso al curso gratuito de florería, además de un beneficio exclusivo de Vizcaína.</p>
-      <a class="boton boton--principal" href="#registro" data-scroll>Quiero participar</a>
+      <h2 class="cta__titulo">Tu próximo arreglo podría empezar aquí</h2>
+      <p>Regístrate y participa para ganar un curso de florería. ¡Deja que tu creatividad florezca!</p>
+      <a class="boton boton--principal" href="#registro" data-scroll>Quiero concursar</a>
     </div>
   </section>
 
@@ -228,10 +185,11 @@
     <div class="registro__marco">
 
       <div class="registro__encabezado">
-        <h2 class="titulo-seccion" id="t-registro">Tu registro</h2>
-        <p class="subtitulo-seccion">Toma menos de un minuto. Te confirmamos por el medio que elijas.</p>
+        <h2 class="titulo-seccion" id="t-registro">Regístrate para concursar</h2>
+        <p class="subtitulo-seccion">Completa tus datos para participar por un curso de florería. Registrarte no garantiza ganar el premio.</p>
       </div>
 
+      <noscript><p>Activa JavaScript en tu navegador para completar el registro.</p></noscript>
       <form class="formulario" id="formulario" novalidate>
 
         <!-- Campo trampa anti-spam: invisible para personas -->
@@ -242,61 +200,32 @@
 
         <div class="campo">
           <label for="nombre">Nombre completo</label>
-          <input type="text" id="nombre" name="nombre" autocomplete="name" placeholder="María Fernanda López" required>
+          <input type="text" id="nombre" name="nombre" maxlength="120" aria-describedby="error-nombre" autocomplete="name" placeholder="María Fernanda López" required>
           <p class="campo__error" id="error-nombre"></p>
         </div>
 
         <div class="campo">
           <label for="telefono">Teléfono</label>
-          <input type="tel" id="telefono" name="telefono" inputmode="numeric" autocomplete="tel" placeholder="33 1234 5678" required>
+          <input type="tel" id="telefono" name="telefono" maxlength="14" aria-describedby="error-telefono" inputmode="numeric" autocomplete="tel" placeholder="33 1234 5678" required>
           <p class="campo__error" id="error-telefono"></p>
         </div>
 
         <div class="campo">
           <label for="correo">Correo electrónico</label>
-          <input type="email" id="correo" name="correo" autocomplete="email" placeholder="maria@correo.com" required>
+          <input type="email" id="correo" name="correo" maxlength="254" aria-describedby="error-correo" autocomplete="email" placeholder="maria@correo.com" required>
           <p class="campo__error" id="error-correo"></p>
         </div>
 
-        <!-- Selección múltiple: puede marcar varias categorías -->
-        <fieldset class="campo campo--grupo">
-          <legend>¿Qué te gustaría conocer de Vizcaína?</legend>
-          <p class="campo__ayuda">Puedes elegir más de una opción.</p>
-          <div class="opciones opciones--chips">
-            <label class="chip"><input type="checkbox" name="interes" value="Sillas"><span>Sillas</span></label>
-            <label class="chip"><input type="checkbox" name="interes" value="Copas"><span>Copas</span></label>
-            <label class="chip"><input type="checkbox" name="interes" value="Cerámica"><span>Cerámica</span></label>
-            <label class="chip"><input type="checkbox" name="interes" value="Cubiertos"><span>Cubiertos</span></label>
-            <label class="chip"><input type="checkbox" name="interes" value="Platos de cristal"><span>Platos de cristal</span></label>
-          </div>
-          <p class="campo__error" id="error-interes"></p>
-        </fieldset>
 
-        <fieldset class="campo campo--grupo">
-          <legend>¿Te gustaría participar en el curso gratuito de florería?</legend>
-          <div class="opciones">
-            <label class="opcion"><input type="radio" name="curso" value="Sí, me encantaría" required><span>Sí, me encantaría</span></label>
-            <label class="opcion"><input type="radio" name="curso" value="No estoy interesada"><span>No estoy interesada</span></label>
-          </div>
-          <p class="campo__error" id="error-curso"></p>
-        </fieldset>
 
-        <fieldset class="campo campo--grupo">
-          <legend>¿Cómo te gustaría recibir tu descuento especial?</legend>
-          <div class="opciones">
-            <label class="opcion"><input type="radio" name="contacto" value="WhatsApp" required><span>WhatsApp</span></label>
-            <label class="opcion"><input type="radio" name="contacto" value="Correo electrónico"><span>Correo electrónico</span></label>
-          </div>
-          <p class="campo__error" id="error-contacto"></p>
-        </fieldset>
 
-        <button class="boton boton--principal boton--ancho" type="submit" id="botonEnviar">Enviar mi registro</button>
+        <button class="boton boton--principal boton--ancho" type="submit" id="botonEnviar">Registrarme para concursar</button>
 
         <!-- Mensajes generales del formulario (errores de envío) -->
         <p class="formulario__aviso" id="avisoFormulario" role="status"></p>
 
         <p class="formulario__legal">
-          Al registrarte aceptas recibir información sobre el evento y las novedades de Vizcaína.
+          Al registrarte aceptas recibir información sobre el concurso Florecer Interior. El registro no garantiza obtener el premio.
         </p>
       </form>
 
@@ -310,10 +239,11 @@
           <ellipse cx="58" cy="40" rx="15" ry="9" stroke="currentColor" stroke-width="1.2"/>
         </svg>
 
-        <h2 class="confirmacion__titulo">¡Gracias por registrarte!</h2>
-        <p>Tu lugar ha sido registrado correctamente.</p>
-        <p>Pronto recibirás información del evento y tu beneficio exclusivo.</p>
-        <a class="boton boton--whatsapp" id="botonWhatsApp" href="#" target="_blank" rel="noopener">Continuar por WhatsApp</a>
+        <h2 class="confirmacion__titulo" id="confirmacionTitulo">¡Gracias por registrarte!</h2>
+        <p>Hemos recibido tu registro para participar en el concurso Florecer Interior.</p>
+        <p>Conserva tus datos de contacto actualizados. Registrarte no significa que hayas ganado el curso.</p>
+        <p>No necesitas enviar un WhatsApp para participar. Si tienes dudas, estamos para ayudarte.</p>
+        <a class="boton boton--whatsapp" id="botonWhatsApp" href="#" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
       </div>
 
     </div>
@@ -321,8 +251,17 @@
 </main>
 
 <footer class="pie">
+  <div class="hero__logos pie__logos" aria-label="Apapacho Experiencias y Vizcaína Living Home">
+    <div class="hero__logo hero__logo--apapacho">
+      <img src="images/apapacho.jpeg" alt="Apapacho Experiencias" width="1280" height="427" loading="lazy" decoding="async">
+    </div>
+    <div class="hero__logo hero__logo--vizcaina">
+      <img src="images/vizcaina.png" alt="Vizcaína Living Home" width="2500" height="2500" loading="lazy" decoding="async">
+    </div>
+  </div>
   <p class="pie__marca">Vizcaína</p>
-  <p>Florecer Interior · Curso gratuito de florería</p>
+  <p class="pie__lema">Recorremos el mundo para encontrar lo extraordinario</p>
+  <p>Florecer Interior · Participa para ganar un curso de florería</p>
 </footer>
 
 <!-- ============================================================
@@ -335,6 +274,12 @@
   <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" type="button" aria-label="Imagen siguiente">&#8250;</button>
 </div>
 
+<a class="whatsapp-flotante" id="whatsappFlotante" href="https://wa.me/5213319571684?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20el%20concurso%20Florecer%20Interior."
+   target="_blank" rel="noopener noreferrer" aria-label="Contactarnos por WhatsApp (abre una nueva pestaña)" title="¿Tienes dudas? Escríbenos por WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" focusable="false">
+    <path d="M16 .8A15.1 15.1 0 0 0 2.9 23.4L.8 31.2l8-2.1A15.2 15.2 0 1 0 16 .8Zm0 27.6a12.4 12.4 0 0 1-6.3-1.7l-.5-.3-4.7 1.2 1.3-4.6-.3-.5A12.5 12.5 0 1 1 16 28.4Zm6.9-9.4c-.4-.2-2.2-1.1-2.5-1.2-.4-.1-.6-.2-.9.2-.2.4-.9 1.2-1.1 1.4-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8l.6-.7.4-.6c.1-.2 0-.5 0-.7l-1.1-2.6c-.3-.7-.6-.6-.9-.6h-.7c-.3 0-.7.1-1 .5s-1.3 1.3-1.3 3.1 1.4 3.6 1.6 3.8c.2.3 2.7 4.1 6.5 5.7.9.4 1.6.6 2.2.8.9.3 1.7.2 2.3.1.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.7.2-1.8-.1-.2-.3-.3-.7-.5Z"/>
+  </svg>
+</a>
 <script src="script.js"></script>
 </body>
 </html>
