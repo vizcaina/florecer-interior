@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+<g stroke="#75434f" stroke-width="1.1" fill="#efbdc9">
+<ellipse cx="16" cy="9" rx="4.5" ry="7"/>
+<ellipse cx="16" cy="9" rx="4.5" ry="7" transform="rotate(60 16 16)"/>
+<ellipse cx="16" cy="9" rx="4.5" ry="7" transform="rotate(120 16 16)"/>
+<ellipse cx="16" cy="9" rx="4.5" ry="7" transform="rotate(180 16 16)"/>
+<ellipse cx="16" cy="9" rx="4.5" ry="7" transform="rotate(240 16 16)"/>
+<ellipse cx="16" cy="9" rx="4.5" ry="7" transform="rotate(300 16 16)"/>
+<circle cx="16" cy="16" r="4.5" fill="#f4d791"/>
+<circle cx="16" cy="16" r="1.1" fill="#75434f" stroke="none"/>
+</g></svg>
