@@ -842,3 +842,13 @@ input[type="email"]:focus{
   .pie .pie__lema{ font-size:clamp(18px, 5vw, 24px); }
   .pie__lema span{ display:block; }
 }
+
+/* Cursor floral para dispositivos con ratón; el centro indica dónde se pulsa. */
+@media (hover:hover) and (pointer:fine){
+  body{ cursor:url("images/cursor-flor.svg") 16 16, auto; }
+  a, button, summary, .galeria__item, .chip span, .opcion span{
+    cursor:url("images/cursor-flor.svg") 16 16, pointer;
+  }
+  input[type="text"], input[type="tel"], input[type="email"], textarea{ cursor:text; }
+  button:disabled, #botonEnviar[disabled]{ cursor:progress; }
+}
