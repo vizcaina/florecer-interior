@@ -319,8 +319,8 @@ function mostrarConfirmacion(nombre) {
   confirmacion.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
-// Cierre al terminar el 29 de septiembre, hora de Guadalajara (UTC-6).
-const CIERRE_CONCURSO = Date.parse("2026-09-30T00:00:00-06:00");
+// Cierre al iniciar el 27 de septiembre, hora de Guadalajara (UTC-6).
+const CIERRE_CONCURSO = Date.parse("2026-09-27T00:00:00-06:00");
 function tiempoRestante(ahora) {
   const total = Math.max(0, Math.ceil((CIERRE_CONCURSO - ahora) / 1000));
   return { dias: Math.floor(total / 86400), horas: Math.floor(total / 3600) % 24,
@@ -333,7 +333,7 @@ function actualizarCuenta() {
   }
   if (tiempo.terminado) {
     const estado = document.getElementById("contadorEstado");
-    const texto = "El plazo de registro ha finalizado. Anuncio de ganadores: 30 de septiembre de 2026.";
+    const texto = "El plazo de registro ha finalizado. Anuncio de ganadores: 12 de octubre de 2026.";
     if (estado.textContent !== texto) estado.textContent = texto;
   }
 }
